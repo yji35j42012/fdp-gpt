@@ -60,14 +60,22 @@
 	// .alert_box
 	&_box {
 		overflow: hidden;
+		@include d_f(flex);
+		flex-direction: column;
 		min-width: 582px;
-		min-height: 350px;
+		// min-height: 350px;
+		max-height: 100%;
 		border-radius: 12px;
 		background-color: #fff;
+
+		._loading & {
+			padding-bottom: 44px;
+		}
 	}
 
 	// .alert_head
 	&_head {
+		flex: none;
 		@include d_f(flex, center, center);
 		width: 100%;
 		height: 60px;
@@ -85,11 +93,19 @@
 
 	// .alert_body
 	&_body {
-		padding-top: 30px;
+		@include d_f(flex);
+		flex-direction: column;
+		width: 100%;
+		height: 100%;
+		flex: 1 1 100%;
+		min-height: 50px;
 	}
 
 	// .alert_txt
 	&_txt {
+		width: 100%;
+		height: 100%;
+		padding: 30px 0;
 		color: #000;
 		text-align: center;
 		font-size: 16px;
@@ -97,6 +113,12 @@
 		font-weight: 400;
 		line-height: normal;
 		text-transform: capitalize;
+	}
+
+	.alert_func {
+		flex: none;
+		@include d_f(flex, center, center);
+		padding-bottom: 40px;
 	}
 }
 
@@ -115,10 +137,6 @@
 		border-radius: 50%;
 		-webkit-animation: spCircRot 0.6s infinite linear;
 		animation: spCircRot 0.6s infinite linear;
-	}
-
-	&+.alert_txt {
-		margin-top: 30px;
 	}
 
 	@keyframes spCircRot {
