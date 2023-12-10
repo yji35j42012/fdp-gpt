@@ -122,7 +122,14 @@
 		padding-bottom: 40px;
 	}
 }
+.isBack{
+	color: #879BA4;
 
+	&::before{
+		content:" - ";
+		color: #00e374;
+	}
+}
 .loading {
 	width: 100px;
 	height: 100px;

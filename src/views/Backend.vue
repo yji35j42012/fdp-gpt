@@ -4,7 +4,9 @@
             <!-- 反灰class加上_desable -->
             <div :class="['backend_list', item.show ? '' : '_desable']" v-for="(item, index) in b_data" :key="index">
                 <div class="backend_list_info" :data-num="index + 1">
-                    <span>{{ item.txt }}</span>
+                    <div class="backend_textareaBox">
+                        <textarea class="backend_textarea" :ref="'f'+index" v-model="item.txt"></textarea>
+                    </div>
                 </div>
                 <div v-if="index == 0" class="backend_list_bot" data-bef="起始問題"></div>
                 <div v-else class="backend_list_bot" data-bef="接續第" data-aft="個問答">
@@ -108,7 +110,10 @@ export default {
     components: {
         Alert
     },
-    methods: {
+    mounted() {
+        this.$refs.f0[0].focus()
+    },
+    methods: {        
         saveHandler() {
             // 假判斷
             if (this.b_func.keywords !== "") {
@@ -120,6 +125,7 @@ export default {
                 this.alertMsg.msg = "儲存成功"
             }
             this.alertMsg.show = true
+         
         },
         returnAlert() {
             this.alertMsg.show = false
@@ -140,7 +146,7 @@ export default {
                 this.b_data.push(
                     {
                         b_dataId: this.b_data.length,
-                        txt: "根據〔技術描述 〕，列出3～10項與醫療相關“的可能的“potential Applications ”潛在應用，回答一開始先加上標題：〔potential Applications〕，標題加上中括號。技術描述：〔輸入內容 〕。請使用英文回答",
+                        txt: "根據〔技術描述 〕，列出3～10項與醫療相關“的可能的“potential Applications ”潛在應用，回答一開始先加上標題：〔potential Applications〕，標題加上中括號。技術描述：〔輸入內容 〕。請使用英文回答根據〔技術描述 〕，列出3～10項與醫療相關“的可能的“potential Applications ”潛在應用，回答一開始先加上標題：〔potential Applications〕，標題加上中括號。技術描述：〔輸入內容 〕。請使用英文回答",
                         show: true
                     }
                 )
