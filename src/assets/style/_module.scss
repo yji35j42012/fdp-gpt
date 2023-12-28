@@ -26,7 +26,7 @@
 		background-image: url("../images/icon_ai.svg");
 	}
 
-	& + .front_filter {
+	&+.front_filter {
 		margin-left: 16px;
 	}
 }
@@ -43,6 +43,17 @@
 
 		@include hoverHandler {
 			background-color: #00b956;
+		}
+	}
+
+	&._download {
+		margin-left: auto;
+		margin-right: 8px;
+
+		&:disabled {
+			background-color: #C3C3C3;
+			color: #858585;
+			cursor: default;
 		}
 	}
 }
@@ -104,7 +115,9 @@
 	// .alert_txt
 	&_txt {
 		width: 100%;
+		max-width: 486px;
 		height: 100%;
+		margin: auto;
 		padding: 40px 0;
 		color: #000;
 		text-align: center;
@@ -122,14 +135,16 @@
 		padding-bottom: 40px;
 	}
 }
-.isBack{
+
+.isBack {
 	color: #879BA4;
 
-	&::before{
-		content:" - ";
+	&::before {
+		content: " - ";
 		color: #00e374;
 	}
 }
+
 .loading {
 	width: 100px;
 	height: 100px;
@@ -174,6 +189,7 @@
 		height: auto;
 		text-align: center;
 	}
+
 	// .numBox_btn
 	&_btn {
 		position: relative;

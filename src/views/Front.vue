@@ -44,7 +44,7 @@
                     </ul>
                 </div>
                 <div class="front_detail_content">
-                    <div class="front_detail_tbScroll">
+                    <div class="front_detail_tbScroll" v-if="tb_itemPage == 0">
                         <table class="front_detail_tb">
                             <thead>
                                 <tr>
@@ -68,6 +68,10 @@
                             </tbody>
                         </table>
                     </div>
+                    <div class="front_nodata" v-else>
+                        <img src="../assets/images/icon_undefined.svg" alt="">
+                        <div class="front_nodata_txt">Under Construction</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -80,10 +84,14 @@
         </div>
 
         <Loading v-if="showLoading"></Loading>
+
+        <Alert v-if="alertMsg.show" :alertTitle="alertMsg.title" :alertMsg="alertMsg.msg" @alertConfirm="returnAlert">
+        </Alert>
     </div>
 </template>
 <script>
 import Loading from '../components/Loading'
+import Alert from '../components/Alert'
 // 假資料
 var filter_itemData = ["All", "Potential Applications", "Benchmark Company", "Benchmark Product", "MD Assessment"]
 var filter_itemContent = [
@@ -102,7 +110,7 @@ var filter_itemContent = [
         "11. 術中即時導航：在手術過程中，此技術能夠提供即時的3D導航，幫助醫師根據實際情況調整手術策略。",
     ]
 ]
-var filter_tb_itemData = ["All", "De Novo", "PMA", "Registration ＆ Listing"]
+var filter_tb_itemData = ["510K", "De Novo", "PMA", "Registration ＆ Listing"]
 var filter_tbData = [
     {
         device_id: 2,
@@ -221,11 +229,18 @@ export default {
             filter_tb_item: [],
             tb_itemPage: 0,
             filter_item_content: [],
-            filter_tb_content: []
+            filter_tb_content: [],
+            // 系統異常false 改 true
+            alertMsg: {
+                show: false,
+                title: "系統異常",
+                msg: "目前系統異常，請在稍後再次執行",
+            }
         };
     },
     components: {
-        Loading
+        Loading,
+        Alert
     },
     methods: {
         clearSearch() {
@@ -233,6 +248,8 @@ export default {
         },
         submitSearch() {
             this.showLoading = true
+            var dow = document.querySelector("#dow");
+            dow.removeAttribute("disabled")
             this.fakeGet()
         },
         fliterItemHandler(i) {
@@ -241,7 +258,6 @@ export default {
         fliterTbItem(i) {
             this.tb_itemPage = i
         },
-
         // 這是測試用的
         fakeGet() {
             setTimeout(() => {
@@ -251,7 +267,12 @@ export default {
                 this.filter_item_content = filter_itemContent
                 this.filter_tb_content = filter_tbData
             }, 1000);
-        }
+        },
+        returnAlert() {
+            this.alertMsg.show = false
+            this.alertMsg.title = ""
+            this.alertMsg.msg = ""
+        },
 
     }
 }

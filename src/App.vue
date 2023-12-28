@@ -2,6 +2,7 @@
 	<div id="app" class="wrap">
 		<div class="header">
 			<div class="header_title">Biomedical Regulations Widget <span v-if="backend" class="isBack">Backend</span></div>
+			<button v-if="!backend" @click="download" class="normal_btn _generate _download" disabled id="dow">Download</button>
 			<div class="user">Member 0001</div>
 		</div>
 		<router-view />
@@ -23,6 +24,11 @@ export default {
 		}
 		// console.log('asdf', this.$route.path);
 	},
+	methods: {
+		download() {
+
+		}
+	}
 
 }
 </script>

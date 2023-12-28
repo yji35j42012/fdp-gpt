@@ -5,7 +5,7 @@
             <div :class="['backend_list', item.show ? '' : '_desable']" v-for="(item, index) in b_data" :key="index">
                 <div class="backend_list_info" :data-num="index + 1">
                     <div class="backend_textareaBox">
-                        <textarea class="backend_textarea" :ref="'f'+index" v-model="item.txt"></textarea>
+                        <textarea class="backend_textarea" :ref="'f' + index" v-model="item.txt"></textarea>
                     </div>
                 </div>
                 <div v-if="index == 0" class="backend_list_bot" data-bef="起始問題"></div>
@@ -36,7 +36,7 @@
                 <p class="backend_filter_txt">標題名稱</p>
                 <input type="text" class="normal_inp" v-model="b_func.title">
             </li>
-            <li class="backend_filter_list" data-note="請用 “/ “ 分開如：software/system">
+            <li class="backend_filter_list _btxt" data-note="請用 “/ “ 分開如：software/system">
                 <p class="backend_filter_txt">停用詞</p>
                 <input type="text" class="normal_inp" v-model="b_func.words">
             </li>
@@ -44,13 +44,16 @@
                 <p class="backend_filter_txt">替換原文關鍵詞</p>
                 <input type="text" class="normal_inp" v-model="b_func.keywords">
             </li>
-            <li class="backend_filter_list">
+            <li class="backend_filter_list _tline">
                 <p class="backend_filter_txt">api key</p>
                 <input type="text" class="normal_inp" v-model="b_func.apikey">
             </li>
             <li class="backend_filter_list">
                 <p class="backend_filter_txt">GPT 版本</p>
                 <input type="text" class="normal_inp" v-model="b_func.version">
+            </li>
+            <li class="backend_filter_list _test _bline">
+                <button class="normal_btn _generate _test" @click="testGpt">測試</button>
             </li>
             <li class="backend_filter_list">
                 <p class="backend_filter_txt">溫度</p>
@@ -113,7 +116,7 @@ export default {
     mounted() {
         this.$refs.f0[0].focus()
     },
-    methods: {        
+    methods: {
         saveHandler() {
             // 假判斷
             if (this.b_func.keywords !== "") {
@@ -125,7 +128,7 @@ export default {
                 this.alertMsg.msg = "儲存成功"
             }
             this.alertMsg.show = true
-         
+
         },
         returnAlert() {
             this.alertMsg.show = false
@@ -171,6 +174,11 @@ export default {
                 this.b_func.temp = parseFloat(this.b_func.temp.toFixed(2));
             }
         },
+        testGpt() {
+            this.alertMsg.show = true
+            this.alertMsg.title = "測試結果"
+            this.alertMsg.msg = "GPT 回覆結果文案在此GPT 回覆結果文案在此GPT 回覆結果文案在此GPT 回覆結果文案在此GPT 回覆結果文案在此GPT 回覆結果文案在此GPT 回覆結果文案在此GPT 回覆結果文案在此GPT 回覆結果文案在此GPT 回覆結果文案在此GPT 回覆結果文案在此GPT 回覆結果文案在此GPT 回覆結果文案在此GPT 回覆結果文案在此GPT 回覆結果文案在此"
+        }
     }
 }
 </script>

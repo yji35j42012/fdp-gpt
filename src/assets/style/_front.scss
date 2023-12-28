@@ -117,14 +117,14 @@
 		}
 
 		// .front_info_group
-		&_group {
-		}
+		&_group {}
 
 		// .front_info_list
 		&_list {
-            line-height: normal;
-            font-weight: 400;
-			& + & {
+			line-height: normal;
+			font-weight: 400;
+
+			&+& {
 				margin-top: 16px;
 			}
 		}
@@ -265,12 +265,14 @@
 					width: 50%;
 				}
 			}
+
 			tr:nth-child(even) {
 				background-color: #f2fff5;
 			}
+
 			td {
 				// height: 40px;
-                height: 60px;
+				height: 60px;
 				padding: 12px 4px;
 				border-right: 1px solid #cbd5e1;
 				font-size: 16px;
@@ -290,6 +292,37 @@
 					text-align: center;
 				}
 			}
+		}
+	}
+
+	// .front_nodata
+	&_nodata {
+		padding-top: 190px;
+		text-align: center;
+		&::before {
+			content: "";
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: calc(100% - 16px);
+			height: 1px;
+			background-color: #f3f3f3;
+			z-index: 1;
+		}
+
+		img {
+			width: 130px;
+		}
+
+		// .front_nodata_txt
+		&_txt {
+			margin-top: 12px;
+			color: #000;
+			text-align: center;
+			font-size: 36px;
+			font-style: normal;
+			font-weight: 700;
+			line-height: normal;
 		}
 	}
 
