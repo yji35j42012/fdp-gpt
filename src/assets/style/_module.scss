@@ -29,6 +29,22 @@
 	&+.front_filter {
 		margin-left: 16px;
 	}
+
+
+	// .icon_sort
+	&_sort {
+		display: inline-block;
+		width: 13px;
+		height: 12px;
+		background: url('../../assets/images/icon_sort_normal.svg')no-repeat center/contain;
+
+		._asc &{
+			background-image: url('../../assets/images/icon_asc.svg');
+		}
+		._desc &{
+			background-image: url('../../assets/images/icon_desc.svg');
+		}
+	}
 }
 
 .normal_btn {
@@ -251,6 +267,7 @@
 
 	// .header_title
 	&_title {
+		@include d_f(flex, none, center);
 		color: #00e374;
 		font-size: 24px;
 		font-style: normal;
@@ -282,5 +299,22 @@
 			font-weight: 400;
 			line-height: normal;
 		}
+	}
+}
+
+.logo {
+	width: 44px;
+	height: 44px;
+	margin-right: 10px;
+}
+
+.normal_sort {
+	@include d_f(flex, space-between, center);
+	@extend %hand;
+
+	.icon_sort {
+		margin-left: 5px;
+
+		
 	}
 }

@@ -48,11 +48,37 @@
                         <table class="front_detail_tb">
                             <thead>
                                 <tr>
-                                    <th>Device <br> Class</th>
-                                    <th>510(k) <br> Number</th>
-                                    <th>Applicant</th>
-                                    <th>DeviceName</th>
-                                    <th>Decision <br> Date</th>
+                                    <th>
+                                        <!-- 小到大 _asc  大到小 _desc -->
+                                        <div :class="['normal_sort', sortList[0]]" @click="sortHandler(0)">
+                                            Device <br> Class
+                                            <i class="icon_sort"></i>
+                                        </div>
+                                    </th>
+                                    <th>
+                                        <div :class="['normal_sort', sortList[1]]" @click="sortHandler(1)">
+                                            510(k) <br> Number
+                                            <i class="icon_sort"></i>
+                                        </div>
+                                    </th>
+                                    <th>
+                                        <div :class="['normal_sort', sortList[2]]" @click="sortHandler(2)">
+                                            Applicant
+                                            <i class="icon_sort"></i>
+                                        </div>
+                                    </th>
+                                    <th>
+                                        <div :class="['normal_sort', sortList[3]]" @click="sortHandler(3)">
+                                            DeviceName
+                                            <i class="icon_sort"></i>
+                                        </div>
+                                    </th>
+                                    <th>
+                                        <div :class="['normal_sort', sortList[4]]" @click="sortHandler(4)">
+                                            Decision <br> Date
+                                            <i class="icon_sort"></i>
+                                        </div>
+                                    </th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -235,7 +261,8 @@ export default {
                 show: false,
                 title: "系統異常",
                 msg: "目前系統異常，請在稍後再次執行",
-            }
+            },
+            sortList: ['', '', '', '', ''],
         };
     },
     components: {
@@ -273,7 +300,18 @@ export default {
             this.alertMsg.title = ""
             this.alertMsg.msg = ""
         },
-
+        sortHandler(n) {
+            if (this.sortList[n] == '') {
+                this.sortList = ['', '', '', '', ''];
+                this.sortList[n] = '_asc';
+            } else if (this.sortList[n] == '_asc') {
+                this.sortList = [0, 0, 0, 0, 0];
+                this.sortList[n] = '_desc';
+            } else if (this.sortList[n] == '_desc') {
+                this.sortList = [0, 0, 0, 0, 0];
+                this.sortList[n] = '';
+            }
+        }
     }
 }
 </script>
