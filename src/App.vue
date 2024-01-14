@@ -3,7 +3,7 @@
 		<div class="header">
 			<div class="header_title">
 				<div class="logo"><img src="./assets/images/logo.svg" alt=""></div>
-				Biomedical Regulations Widget 
+				MED PILOT
 				<span v-if="backend" class="isBack">Backend</span>
 			</div>
 			<button v-if="!backend" @click="download" class="normal_btn _generate _download" disabled id="dow">Download</button>
