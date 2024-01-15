@@ -40,7 +40,7 @@ export default {
 	},
 	mounted() {
 		var now = this.$route.path;
-		if (now == "/" || now == "/landing") {
+		if (now == "/landing") {
 			this.nowPage = "landing";
 		}
 		this.screenH = window.innerHeight
@@ -49,7 +49,7 @@ export default {
 	watch: {
 		$route(to, from) {
 			var now = this.$route.path;
-			if (now == "/" || now == "/landing") {
+			if (now == "/landing") {
 				this.nowPage = "landing";
 			} else {
 				this.nowPage = now.split("/")[1];

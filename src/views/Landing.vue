@@ -1,7 +1,6 @@
 <template>
     <div class="landing">
         <div id="home" class="landing_banner">
-            <img src="../assets/images/landing_bg.jpeg" alt="">
             <div class="landing_banner_txt">
                 <img src="../assets/images/landing_logo.svg" alt="" class="landing_logo">
                 <div class="landing_banner_t1">Empowering Solutions, Global Reach</div>

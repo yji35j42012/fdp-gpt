@@ -9,6 +9,7 @@
         width: 100vw;
         min-width: 1440px;
         height: 100vh;
+        background: url('../images/landing_bg.jpeg')no-repeat center/cover;
 
         >img {
             position: absolute;
@@ -164,7 +165,8 @@
             padding-top: 83px;
             padding-bottom: 189px;
             background-color: #272F3F;
-            h1{
+
+            h1 {
                 margin-bottom: 50px;
             }
         }
@@ -356,20 +358,22 @@
         line-height: normal;
 
         // .landing_contact_item
-        &_item{
-            &::before{
+        &_item {
+            &::before {
                 content: attr(data-txt);
             }
-            &+&{
+
+            &+& {
                 margin-top: 30px;
             }
 
-            &._privacy{
+            &._privacy {
                 margin-top: 56px;
                 font-size: 16px;
                 text-decoration: underline;
             }
-            >a{
+
+            >a {
                 text-decoration: underline;
             }
         }

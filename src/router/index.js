@@ -8,12 +8,12 @@ Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/',
+    path: '/landing',
     name: 'landing',
     component: Landing
   },
   {
-    path: '/front',
+    path: '/',
     name: 'front',
     component: Front
   },
@@ -24,7 +24,7 @@ const routes = [
   },
   {
     path: '*',
-    name: 'landing',
+    name: 'front',
   },
 ]
 
