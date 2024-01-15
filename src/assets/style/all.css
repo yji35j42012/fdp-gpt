@@ -368,8 +368,6 @@ table {
 }
 .header_title {
   display: flex;
-  justify-content: none;
-  align-items: center;
   color: #00e374;
   font-size: 24px;
   font-style: normal;
@@ -404,8 +402,8 @@ table {
 }
 
 .logo {
-  width: 44px;
-  height: 44px;
+  width: 36px;
+  height: 36px;
   margin-right: 10px;
 }
 
