@@ -62,6 +62,15 @@
             </ul>
         </div>
         <div id="pruducts" class="landing_info _products">
+            <div class="landing_products_bg">
+                <svg version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                    x="0px" y="0px" viewBox="0 0 1845 1065" style="enable-background:new 0 0 1845 1065;"
+                    xml:space="preserve">
+
+                    <path class="st0" d="M1575.7,155.5c-359.3-207.3-946.9-207.3-1306.1,0c-359.4,207.4-359.4,546.6,0,753.9
+	c359.2,207.4,946.8,207.4,1306.1,0C1934.8,702.1,1934.8,362.9,1575.7,155.5z" />
+                </svg>
+            </div>
             <h1>Products</h1>
             <div class="landing_products">
                 <div class="landing_products_img">
