@@ -30,6 +30,9 @@
 		margin-left: 16px;
 	}
 
+	&._down {
+		background-image: url("../images/icon_down.svg");
+	}
 
 	// .icon_sort
 	&_sort {
@@ -38,10 +41,11 @@
 		height: 12px;
 		background: url('../../assets/images/icon_sort_normal.svg')no-repeat center/contain;
 
-		._asc &{
+		._asc & {
 			background-image: url('../../assets/images/icon_asc.svg');
 		}
-		._desc &{
+
+		._desc & {
 			background-image: url('../../assets/images/icon_desc.svg');
 		}
 	}
@@ -71,6 +75,40 @@
 			background-color: #C3C3C3;
 			color: #858585;
 			cursor: default;
+		}
+	}
+}
+
+.border_btn {
+	min-width: 70px;
+	padding: 4px;
+	border-radius: 10px;
+	border: 1px solid #FFF;
+	color: #fff;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+	@extend %hand;
+
+	&:disabled {
+		pointer-events: none;
+		opacity: .5;
+	}
+
+	&._blue {
+		color: #03A6FF;
+		border-color: #03A6FF;
+		text-align: center;
+		font-size: 20px;
+		font-style: normal;
+		font-weight: 500;
+		line-height: normal;
+
+		@include hoverHandler {
+			color: #fff;
+			border-color: 1px solid #03A6FF;
+			background-color: #03A6FF;
 		}
 	}
 }
@@ -252,10 +290,18 @@
 }
 
 .wrap {
-	overflow: hidden;
+
 	width: 100%;
 	min-width: 1440px;
 	height: 100%;
+
+	&:not(._landing) {
+		overflow: hidden;
+	}
+
+	&._landing {
+		overflow-x: hidden;
+	}
 }
 
 .header {
@@ -265,9 +311,21 @@
 	padding: 10px 20px;
 	background-color: #27383f;
 
+	&._landing {
+		z-index: 10;
+		position: fixed;
+		top: 0;
+		left: 0;
+		background-color: transparent;
+
+		&._on {
+			background-color: #283041;
+		}
+	}
+
 	// .header_title
 	&_title {
-		@include d_f(flex);
+		@include d_f(flex, none, center);
 		color: #00e374;
 		font-size: 24px;
 		font-style: normal;
@@ -302,6 +360,42 @@
 	}
 }
 
+.menu {
+	@include d_f(flex, none, center);
+
+	// .menu_li
+	&_li {
+		color: #fff;
+		@extend %hand;
+
+		&._try {
+			color: #0076E3;
+
+			@include hoverHandler {
+				color: #fff;
+			}
+		}
+
+
+
+		@include hoverHandler {
+			color: #0076E3;
+		}
+
+		&+& {
+			margin-left: 40px;
+
+			&._btn {
+				margin-left: 60px;
+			}
+		}
+
+		&._disabled {
+			pointer-events: none;
+		}
+	}
+}
+
 .logo {
 	width: 36px;
 	height: 36px;
@@ -315,6 +409,6 @@
 	.icon_sort {
 		margin-left: 5px;
 
-		
+
 	}
 }

@@ -1,15 +1,30 @@
 <template>
-	<div id="app" class="wrap">
-		<div class="header">
+	<div id="app" :class="['wrap', '_' + nowPage]" ref="wrap">
+		<div :class="['header', nowPage == 'landing' ? '_landing' : '', headerBg ? '_on' : '']">
 			<div class="header_title">
 				<div class="logo"><img src="./assets/images/logo.svg" alt=""></div>
 				MEDPILOT
-				<span v-if="backend" class="isBack">Backend</span>
+				<span v-if="nowPage == 'backend'" class="isBack">Backend</span>
 			</div>
-			<button v-if="!backend" @click="download" class="normal_btn _generate _download" disabled id="dow">Download</button>
-			<div class="user">Member 0001</div>
+
+			<ul v-if="nowPage == 'landing'" class="menu">
+				<li class="menu_li" @click="menuHandler('home')">Home</li>
+				<li class="menu_li" @click="menuHandler('about')">About</li>
+				<li class="menu_li" @click="menuHandler('highlights')">Highlights</li>
+				<li class="menu_li" @click="menuHandler('pruducts')">Pruducts</li>
+				<li class="menu_li" @click="menuHandler('team')">Team</li>
+				<li class="menu_li" @click="menuHandler('contact')">Contact</li>
+				<li class="menu_li _try">
+					<router-link to="/front">Try it</router-link>
+				</li>
+				<li class="menu_li _btn _disabled"><button class="border_btn" disabled>Login</button></li>
+			</ul>
+
+			<button v-if="nowPage == 'front'" @click="download" class="normal_btn _generate _download" disabled
+				id="dow">Download</button>
+			<div v-if="nowPage == 'front'" class="user">Member 0001</div>
 		</div>
-		<router-view />
+		<router-view></router-view>
 	</div>
 </template>
 
@@ -17,21 +32,90 @@
 export default {
 	data() {
 		return {
-			backend: false
-		}
+			nowPage: "",
+			scrollTime: "",
+			headerBg: false,
+			screenH: 0,
+		};
 	},
 	mounted() {
-		if (this.$route.path.indexOf('backend') !== -1) {
-			this.backend = true
-		} else {
-			this.backend = false
+		var now = this.$route.path;
+		if (now == "/" || now == "/landing") {
+			this.nowPage = "landing";
 		}
-		// console.log('asdf', this.$route.path);
+		this.screenH = window.innerHeight
+		this.$refs.wrap.addEventListener('scroll', this.scrollHandler)
+	},
+	watch: {
+		$route(to, from) {
+			var now = this.$route.path;
+			if (now == "/" || now == "/landing") {
+				this.nowPage = "landing";
+			} else {
+				this.nowPage = now.split("/")[1];
+			}
+		}
 	},
 	methods: {
 		download() {
 
-		}
+		}, menuHandler(str) {
+			clearInterval(this.scrollTime)
+			var scrollT = document.querySelector('.wrap');
+			var item = document.querySelector("#" + str).offsetTop;
+			var totalH = document.querySelector(".landing").offsetHeight
+			var lastH = document.querySelector(".landing_info:last-child").offsetHeight
+			var mh = this.screenH > lastH ? totalH - this.screenH : totalH - lastH
+			if (item > scrollT.scrollTop) {
+				this.downScroll(scrollT, item, mh);
+			} else {
+				this.upScroll(scrollT, item);
+			}
+		},
+		downScroll(sc, go, mh) {
+			var count = 30
+			if (Math.abs(go - sc.scrollTop) > 1000) {
+				count = 60
+			}
+			this.scrollTime = setInterval(() => {
+				sc.scrollTop += count
+				if (sc.scrollTop >= mh) {
+					clearInterval(this.scrollTime)
+				}
+				if (!this.headerBg && sc.scrollTop >= this.screenH - 60) {
+					this.headerBg = true
+				}
+				if (sc.scrollTop >= go) {
+					sc.scrollTop = go
+					clearInterval(this.scrollTime)
+				}
+			}, 1);
+		},
+		upScroll(sc, go) {
+			var count = 30
+			if (Math.abs(go - sc.scrollTop) > 1000) {
+				count = 60
+			}
+			this.scrollTime = setInterval(() => {
+				sc.scrollTop -= count
+				if (this.headerBg && sc.scrollTop < this.screenH - 60) {
+					this.headerBg = false
+				}
+				if (sc.scrollTop <= go) {
+					sc.scrollTop = go
+					clearInterval(this.scrollTime)
+				}
+			}, 1);
+		},
+		scrollHandler() {
+			var sc = this.$refs.wrap
+			if (!this.headerBg && sc.scrollTop >= this.screenH - 60) {
+				this.headerBg = true
+			}
+			if (this.headerBg && sc.scrollTop < this.screenH - 60) {
+				this.headerBg = false
+			}
+		},
 	}
 
 }
