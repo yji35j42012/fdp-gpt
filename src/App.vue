@@ -57,14 +57,11 @@ export default {
 
 		window.onload=function () {
 			let favicon=document.querySelector('link[rel="icon"]');
-			console.log('favicon',favicon);
 			if(!favicon){
 				this.nowPage=="landing"?favicon.href =location.href+"favicon_landing.ico":favicon.href =location.href+"favicon.ico"
+				return
 			}
-			var s=favicon.href;
-			var newHref;
 			this.nowPage=="landing"? newHref=s.split("/favicon.ico")[0]+"/"+"favicon_landing.ico":s.split("/favicon.ico")[0]+"/"+"favicon.ico";
-			console.log('newHref',newHref);
 			favicon.href=newHref;
 		}
 	},
