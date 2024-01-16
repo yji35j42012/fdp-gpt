@@ -57,12 +57,15 @@ export default {
 
 		window.onload=function () {
 			let favicon=document.querySelector('link[rel="icon"]');
-			if(!favicon){
-				this.nowPage=="landing"?favicon.href =location.href+"favicon_landing.ico":favicon.href =location.href+"favicon.ico"
+			var newHref;
+			if (!favicon) {
+				this.nowPage=="landing"? newHref=location.href+"favicon_landing.ico":newHref=location.href+"favicon.ico";
+				console.log('newHref', newHref);
+				favicon.href=newHref;
 				return
 			}
 			var s=favicon.href;
-			var newHref;
+
 			this.nowPage=="landing"? newHref=s.split("/favicon.ico")[0]+"/"+"favicon_landing.ico":s.split("/favicon.ico")[0]+"/"+"favicon.ico";
 			favicon.href=newHref;
 		}
@@ -71,7 +74,7 @@ export default {
 		$route(to, from) {
 			var now=this.$route.path;
 			let favicon=document.querySelector('link[rel="icon"]');
-			console.log('favicon_watch',favicon);
+			console.log('favicon_watch', favicon);
 			var s=favicon.href;
 			var newHref;
 			if (now=="/landing") {
@@ -81,7 +84,7 @@ export default {
 				this.nowPage=now.split("/")[1];
 				newHref=s.split("/favicon.ico")[0]+"/"+"favicon.ico"
 			}
-			console.log('newHref_watch',newHref);
+			console.log('newHref_watch', newHref);
 			favicon.href=newHref;
 		}
 	},
