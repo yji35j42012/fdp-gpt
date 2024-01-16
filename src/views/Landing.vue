@@ -174,6 +174,12 @@ export default {
         return {};
     },
     components: {},
+    created() {
+        window.onload=function () {
+            let favicon=document.querySelector('link[rel="icon"]');
+            console.log('favicon', favicon);
+        }
+    },
     mounted() { },
     methods: {
     }

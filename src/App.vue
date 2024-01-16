@@ -2,7 +2,10 @@
 	<div id="app" :class="['wrap', '_' + nowPage]" ref="wrap">
 		<div :class="['header', nowPage == 'landing' ? '_landing' : '', headerBg ? '_on' : '']">
 			<div class="header_title">
-				<div class="logo"><img src="./assets/images/logo.svg" alt=""></div>
+				<div class="logo">
+					<img v-if="nowPage=='landing'" src="./assets/images/logo.svg" alt="">
+					<img v-else src="./assets/images/logo_s.svg" alt="">
+				</div>
 				MEDPILOT
 				<span v-if="nowPage == 'backend'" class="isBack">Backend</span>
 			</div>
