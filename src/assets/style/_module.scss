@@ -440,4 +440,8 @@
 		pointer-events: auto;
 		opacity: 1;
 	}
+
+	@include hoverHandler{
+		background: rgba(0, 0, 0, 1);
+	}
 }
