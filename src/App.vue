@@ -61,6 +61,7 @@ export default {
 				this.nowPage=="landing"?favicon.href =location.href+"favicon_landing.ico":favicon.href =location.href+"favicon.ico"
 				return
 			}
+			var s=favicon.href;
 			this.nowPage=="landing"? newHref=s.split("/favicon.ico")[0]+"/"+"favicon_landing.ico":s.split("/favicon.ico")[0]+"/"+"favicon.ico";
 			favicon.href=newHref;
 		}
