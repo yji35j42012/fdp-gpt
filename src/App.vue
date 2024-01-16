@@ -1,8 +1,8 @@
 <template>
 	<div id="app" :class="['wrap', '_' + nowPage]" ref="wrap">
 		<div :class="['header', nowPage == 'landing' ? '_landing' : '', headerBg ? '_on' : '']">
-			<div class="header_title">
-				<div :class="['logo', nowPage == 'front' ? '_hand' : '']" @click="goHome">
+			<div :class="['header_title', nowPage == 'front' ? '_hand' : '']">
+				<div class="logo" @click="goHome">
 					<img v-if="nowPage == 'landing'" src="./assets/images/logo.svg" alt="">
 					<img v-else src="./assets/images/logo_s.svg" alt="">
 				</div>
