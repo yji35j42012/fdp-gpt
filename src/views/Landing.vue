@@ -174,14 +174,6 @@ export default {
         return {};
     },
     components: {},
-    created() {
-        window.onload=function () {
-            let favicon=document.querySelector('link[rel="icon"]');
-            var s=favicon.href;
-            var newHref=s.split("/favicon.ico")[0]+"/"+"favicon_landing.ico"
-            favicon.href=newHref;
-        }
-    },
     mounted() { },
     methods: {
     }

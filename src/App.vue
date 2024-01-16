@@ -3,7 +3,7 @@
 		<div :class="['header', nowPage == 'landing' ? '_landing' : '', headerBg ? '_on' : '']">
 			<div class="header_title">
 				<div class="logo">
-					<img v-if="nowPage=='landing'" src="./assets/images/logo.svg" alt="">
+					<img v-if="nowPage == 'landing'" src="./assets/images/logo.svg" alt="">
 					<img v-else src="./assets/images/logo_s.svg" alt="">
 				</div>
 				MEDPILOT
@@ -52,15 +52,31 @@ export default {
 		}
 		this.screenH=window.innerHeight
 		this.$refs.wrap.addEventListener('scroll', this.scrollHandler)
+
+
+
+		window.onload=function () {
+			let favicon=document.querySelector('link[rel="icon"]');
+			var s=favicon.href;
+			var newHref;
+			this.nowPage=="landing"? newHref=s.split("/favicon.ico")[0]+"/"+"favicon_landing.ico":s.split("/favicon.ico")[0]+"/"+"favicon.ico";
+			favicon.href=newHref;
+		}
 	},
 	watch: {
 		$route(to, from) {
 			var now=this.$route.path;
+			let favicon=document.querySelector('link[rel="icon"]');
+			var s=favicon.href;
+			var newHref;
 			if (now=="/landing") {
 				this.nowPage="landing";
+				newHref=s.split("/favicon.ico")[0]+"/"+"favicon_landing.ico"
 			} else {
 				this.nowPage=now.split("/")[1];
+				newHref=s.split("/favicon.ico")[0]+"/"+"favicon.ico"
 			}
+			favicon.href=newHref;
 		}
 	},
 	methods: {
