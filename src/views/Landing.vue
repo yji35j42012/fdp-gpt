@@ -7,7 +7,7 @@
                 <div class="landing_banner_t2">MEDPilot's AI at Your Service</div>
                 <div class="landing_banner_t3">Intelligent Tools for FDA submission</div>
 
-                <router-link to="/front" class="border_btn _blue">Try It Now!</router-link>
+                <router-link to="/" class="border_btn _blue">Try It Now!</router-link>
 
                 <span class="landing_banner_scroll">Scroll<i class="icon _down"></i></span>
             </div>
@@ -177,7 +177,9 @@ export default {
     created() {
         window.onload=function () {
             let favicon=document.querySelector('link[rel="icon"]');
-            console.log('favicon', favicon);
+            var s=favicon.href;
+            var newHref=s.split("/favicon.ico")[0]+"/"+"favicon_landing.ico"
+            favicon.href=newHref;
         }
     },
     mounted() { },

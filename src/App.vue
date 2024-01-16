@@ -18,7 +18,7 @@
 				<li class="menu_li" @click="menuHandler('team')">Team</li>
 				<li class="menu_li" @click="menuHandler('contact')">Contact</li>
 				<li class="menu_li _try">
-					<router-link to="/front">Try it</router-link>
+					<router-link to="/">Try it</router-link>
 				</li>
 				<li class="menu_li _btn _disabled"><button class="border_btn" disabled>Login</button></li>
 			</ul>
