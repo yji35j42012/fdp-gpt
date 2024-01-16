@@ -49,7 +49,7 @@ export default {
 		var now=this.$route.path;
 		if (now=="/landing") {
 			this.nowPage="landing";
-		}else if(now=="/front"||now=="/"){
+		} else if (now=="/front"||now=="/") {
 			this.nowPage="front"
 		}
 		this.screenH=window.innerHeight
@@ -80,9 +80,8 @@ export default {
 		}
 	},
 	methods: {
-		download() {
-
-		}, menuHandler(str) {
+		download() { },
+		menuHandler(str) {
 			clearInterval(this.scrollTime)
 			var scrollT=document.querySelector('.wrap');
 			var item=document.querySelector("#"+str).offsetTop;
@@ -96,10 +95,7 @@ export default {
 			}
 		},
 		downScroll(sc, go, mh) {
-			var count=30
-			// if (Math.abs(go-sc.scrollTop)>1000) {
-			// 	count=60
-			// }
+			var count=20
 			this.scrollTime=setInterval(() => {
 				sc.scrollTop+=count
 				if (sc.scrollTop>=mh) {
@@ -115,10 +111,7 @@ export default {
 			}, 1);
 		},
 		upScroll(sc, go) {
-			var count=30
-			// if (Math.abs(go-sc.scrollTop)>1000) {
-			// 	count=60
-			// }
+			var count=20
 			this.scrollTime=setInterval(() => {
 				sc.scrollTop-=count
 				if (this.headerBg&&sc.scrollTop<this.screenH-60) {
