@@ -57,39 +57,24 @@ export default {
 
 		window.onload=function () {
 			let favicon=document.querySelector('link[rel="icon"]');
-			console.log('favicon',favicon);
-			var newHref;
-			var s=favicon.href;
-			console.log('favicon_s',s);
-			if (!s) {
-				this.nowPage=="landing"? newHref=location.href+"favicon_landing.ico":newHref=location.href+"favicon.ico";
-				console.log('newHref', newHref);
-				favicon.href=newHref;
-				return
+			if (now=='/landing') {
+				favicon.href='/fdp-gpt/favicon_landing.ico'
+			} else {
+				favicon.href='/fdp-gpt/favicon.ico'
 			}
-			
-
-			this.nowPage=="landing"? newHref=s.split("/favicon.ico")[0]+"/"+"favicon_landing.ico":s.split("/favicon.ico")[0]+"/"+"favicon.ico";
-			console.log('newHref',newHref);
-			favicon.href=newHref;
 		}
 	},
 	watch: {
 		$route(to, from) {
 			var now=this.$route.path;
 			let favicon=document.querySelector('link[rel="icon"]');
-			console.log('favicon_watch', favicon);
-			var s=favicon.href;
-			var newHref;
 			if (now=="/landing") {
 				this.nowPage="landing";
-				newHref=s.split("/favicon.ico")[0]+"/"+"favicon_landing.ico"
+				favicon.href='/fdp-gpt/favicon_landing.ico'
 			} else {
 				this.nowPage=now.split("/")[1];
-				newHref=s.split("/favicon.ico")[0]+"/"+"favicon.ico"
+				favicon.href='/fdp-gpt/favicon.ico'
 			}
-			console.log('newHref_watch', newHref);
-			favicon.href=newHref;
 		}
 	},
 	methods: {
