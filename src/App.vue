@@ -50,7 +50,7 @@ export default {
 		if (now=="/landing") {
 			this.nowPage="landing";
 		}else if(now=="/front"||now=="/"){
-			this.nowPage("front")
+			this.nowPage="front"
 		}
 		this.screenH=window.innerHeight
 		this.$refs.wrap.addEventListener('scroll', this.scrollHandler)
