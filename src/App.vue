@@ -2,7 +2,7 @@
 	<div id="app" :class="['wrap', '_' + nowPage]" ref="wrap">
 		<div :class="['header', nowPage == 'landing' ? '_landing' : '', headerBg ? '_on' : '']">
 			<div class="header_title">
-				<div :class="['logo',nowPage=='front'?'_hand':'']" @click="goHome">
+				<div :class="['logo', nowPage == 'front' ? '_hand' : '']" @click="goHome">
 					<img v-if="nowPage == 'landing'" src="./assets/images/logo.svg" alt="">
 					<img v-else src="./assets/images/logo_s.svg" alt="">
 				</div>
@@ -49,12 +49,11 @@ export default {
 		var now=this.$route.path;
 		if (now=="/landing") {
 			this.nowPage="landing";
+		}else if(now=="/front"||now=="/"){
+			this.nowPage("front")
 		}
 		this.screenH=window.innerHeight
 		this.$refs.wrap.addEventListener('scroll', this.scrollHandler)
-
-
-
 		window.onload=function () {
 			let favicon=document.querySelector('link[rel="icon"]');
 			if (now=='/landing') {
@@ -71,6 +70,9 @@ export default {
 			if (now=="/landing") {
 				this.nowPage="landing";
 				favicon.href='/fdp-gpt/favicon_landing.ico'
+			} else if (now=="/front"||now=="/") {
+				this.nowPage="front";
+				favicon.href='/fdp-gpt/favicon.ico'
 			} else {
 				this.nowPage=now.split("/")[1];
 				favicon.href='/fdp-gpt/favicon.ico'
@@ -143,7 +145,7 @@ export default {
 		},
 		goHome() {
 			if (this.nowPage=='front') {
-				this.$router.push("/panding");
+				this.$router.push("/landing");
 			}
 		}
 	}
