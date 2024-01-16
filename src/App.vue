@@ -2,7 +2,7 @@
 	<div id="app" :class="['wrap', '_' + nowPage]" ref="wrap">
 		<div :class="['header', nowPage == 'landing' ? '_landing' : '', headerBg ? '_on' : '']">
 			<div class="header_title">
-				<div class="logo">
+				<div :class="['logo',nowPage=='front'?'_hand':'']" @click="goHome">
 					<img v-if="nowPage == 'landing'" src="./assets/images/logo.svg" alt="">
 					<img v-else src="./assets/images/logo_s.svg" alt="">
 				</div>
@@ -95,9 +95,9 @@ export default {
 		},
 		downScroll(sc, go, mh) {
 			var count=30
-			if (Math.abs(go-sc.scrollTop)>1000) {
-				count=60
-			}
+			// if (Math.abs(go-sc.scrollTop)>1000) {
+			// 	count=60
+			// }
 			this.scrollTime=setInterval(() => {
 				sc.scrollTop+=count
 				if (sc.scrollTop>=mh) {
@@ -114,9 +114,9 @@ export default {
 		},
 		upScroll(sc, go) {
 			var count=30
-			if (Math.abs(go-sc.scrollTop)>1000) {
-				count=60
-			}
+			// if (Math.abs(go-sc.scrollTop)>1000) {
+			// 	count=60
+			// }
 			this.scrollTime=setInterval(() => {
 				sc.scrollTop-=count
 				if (this.headerBg&&sc.scrollTop<this.screenH-60) {
@@ -140,6 +140,11 @@ export default {
 		gotopHandler() {
 			var scrollT=document.querySelector('.wrap');
 			this.upScroll(scrollT, 0)
+		},
+		goHome() {
+			if (this.nowPage=='front') {
+				this.$router.push("/panding");
+			}
 		}
 	}
 

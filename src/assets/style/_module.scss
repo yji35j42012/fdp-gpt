@@ -404,6 +404,9 @@
 	width: 36px;
 	height: 36px;
 	margin-right: 10px;
+	&._hand{
+		@extend %hand;
+	}
 }
 
 .normal_sort {
