@@ -335,6 +335,9 @@
 		._landing & {
 			color: #0076E3;
 		}
+		&._hand{
+			@extend %hand;
+		}
 	}
 
 	.user {
@@ -404,9 +407,7 @@
 	width: 36px;
 	height: 36px;
 	margin-right: 10px;
-	&._hand{
-		@extend %hand;
-	}
+	
 }
 
 .normal_sort {
