@@ -24,6 +24,10 @@
 				id="dow">Download</button>
 			<div v-if="nowPage == 'front'" class="user">Member 0001</div>
 		</div>
+
+		<button :class="['gotop', headerBg ? '_on' : '']" v-if="nowPage == 'landing'" @click="gotopHandler" ref="gotop">
+			<img src="./assets/images/icon_gotop.svg" alt="">
+		</button>
 		<router-view></router-view>
 	</div>
 </template>
@@ -39,20 +43,20 @@ export default {
 		};
 	},
 	mounted() {
-		var now = this.$route.path;
-		if (now == "/landing") {
-			this.nowPage = "landing";
+		var now=this.$route.path;
+		if (now=="/landing") {
+			this.nowPage="landing";
 		}
-		this.screenH = window.innerHeight
+		this.screenH=window.innerHeight
 		this.$refs.wrap.addEventListener('scroll', this.scrollHandler)
 	},
 	watch: {
 		$route(to, from) {
-			var now = this.$route.path;
-			if (now == "/landing") {
-				this.nowPage = "landing";
+			var now=this.$route.path;
+			if (now=="/landing") {
+				this.nowPage="landing";
 			} else {
-				this.nowPage = now.split("/")[1];
+				this.nowPage=now.split("/")[1];
 			}
 		}
 	},
@@ -61,61 +65,65 @@ export default {
 
 		}, menuHandler(str) {
 			clearInterval(this.scrollTime)
-			var scrollT = document.querySelector('.wrap');
-			var item = document.querySelector("#" + str).offsetTop;
-			var totalH = document.querySelector(".landing").offsetHeight
-			var lastH = document.querySelector(".landing_info:last-child").offsetHeight
-			var mh = this.screenH > lastH ? totalH - this.screenH : totalH - lastH
-			if (item > scrollT.scrollTop) {
+			var scrollT=document.querySelector('.wrap');
+			var item=document.querySelector("#"+str).offsetTop;
+			var totalH=document.querySelector(".landing").offsetHeight
+			var lastH=document.querySelector(".landing_info:last-child").offsetHeight
+			var mh=this.screenH>lastH? totalH-this.screenH:totalH-lastH
+			if (item>scrollT.scrollTop) {
 				this.downScroll(scrollT, item, mh);
 			} else {
 				this.upScroll(scrollT, item);
 			}
 		},
 		downScroll(sc, go, mh) {
-			var count = 30
-			if (Math.abs(go - sc.scrollTop) > 1000) {
-				count = 60
+			var count=30
+			if (Math.abs(go-sc.scrollTop)>1000) {
+				count=60
 			}
-			this.scrollTime = setInterval(() => {
-				sc.scrollTop += count
-				if (sc.scrollTop >= mh) {
+			this.scrollTime=setInterval(() => {
+				sc.scrollTop+=count
+				if (sc.scrollTop>=mh) {
 					clearInterval(this.scrollTime)
 				}
-				if (!this.headerBg && sc.scrollTop >= this.screenH - 60) {
-					this.headerBg = true
+				if (!this.headerBg&&sc.scrollTop>=this.screenH-60) {
+					this.headerBg=true
 				}
-				if (sc.scrollTop >= go) {
-					sc.scrollTop = go
+				if (sc.scrollTop>=go) {
+					sc.scrollTop=go
 					clearInterval(this.scrollTime)
 				}
 			}, 1);
 		},
 		upScroll(sc, go) {
-			var count = 30
-			if (Math.abs(go - sc.scrollTop) > 1000) {
-				count = 60
+			var count=30
+			if (Math.abs(go-sc.scrollTop)>1000) {
+				count=60
 			}
-			this.scrollTime = setInterval(() => {
-				sc.scrollTop -= count
-				if (this.headerBg && sc.scrollTop < this.screenH - 60) {
-					this.headerBg = false
+			this.scrollTime=setInterval(() => {
+				sc.scrollTop-=count
+				if (this.headerBg&&sc.scrollTop<this.screenH-60) {
+					this.headerBg=false
 				}
-				if (sc.scrollTop <= go) {
-					sc.scrollTop = go
+				if (sc.scrollTop<=go) {
+					sc.scrollTop=go
 					clearInterval(this.scrollTime)
 				}
 			}, 1);
 		},
 		scrollHandler() {
-			var sc = this.$refs.wrap
-			if (!this.headerBg && sc.scrollTop >= this.screenH - 60) {
-				this.headerBg = true
+			var sc=this.$refs.wrap
+			if (!this.headerBg&&sc.scrollTop>=this.screenH-60) {
+				this.headerBg=true
 			}
-			if (this.headerBg && sc.scrollTop < this.screenH - 60) {
-				this.headerBg = false
+			if (this.headerBg&&sc.scrollTop<this.screenH-60) {
+				this.headerBg=false
 			}
 		},
+		gotopHandler() {
+			var scrollT=document.querySelector('.wrap');
+			this.upScroll(scrollT, 0)
+		}
 	}
 
 }

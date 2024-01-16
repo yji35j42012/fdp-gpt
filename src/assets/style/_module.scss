@@ -326,7 +326,7 @@
 	// .header_title
 	&_title {
 		@include d_f(flex, none, center);
-		color: #00e374;
+		color: #0076E3;
 		font-size: 24px;
 		font-style: normal;
 		font-weight: 400;
@@ -410,5 +410,26 @@
 		margin-left: 5px;
 
 
+	}
+}
+.gotop {
+	pointer-events: none;
+	z-index: 2;
+	position: fixed;
+	right: 10px;
+	bottom: 15%;
+	display: block;
+	width: 44px;
+	height: 44px;
+	padding: 5px;
+	border-radius: 10px;
+	opacity: 0.6;
+	background: rgba(0, 0, 0, 0.70);
+	opacity: 0;
+	@extend %hand;
+
+	&._on {
+		pointer-events: auto;
+		opacity: 1;
 	}
 }
