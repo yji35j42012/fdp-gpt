@@ -8,12 +8,12 @@ Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/landing',
+    path: '/',
     name: 'landing',
     component: Landing
   },
   {
-    path: '/',
+    path: '/front',
     name: 'front',
     component: Front
   },
@@ -24,13 +24,12 @@ const routes = [
   },
   {
     path: '*',
-    name: 'front',
+    name: 'landing',
   },
 ]
 
 const router = new VueRouter({
-  // mode: 'history',
-  mode: '',
+  mode: 'history',
   base: process.env.BASE_URL,
   routes
 })

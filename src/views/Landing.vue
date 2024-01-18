@@ -7,7 +7,7 @@
                 <div class="landing_banner_t2">MEDPilot's AI at Your Service</div>
                 <div class="landing_banner_t3">Intelligent Tools for FDA submission</div>
 
-                <router-link to="/" class="border_btn _blue">Try It Now!</router-link>
+                <router-link to="/front" class="border_btn _blue">Try It Now!</router-link>
 
                 <span class="landing_banner_scroll">Scroll<i class="icon _down"></i></span>
             </div>
@@ -23,7 +23,7 @@
                     We are committed to driving the development of ​medical equipment through innovative technology,
                     ​using AI tool as a guide to provide smarter ​decision-making support for startup company.
                     <br><br>
-                    Smart Solutions, Global Reach MEDPilot's AI at Your Service
+                    Empowering Solutions, Global Reach MEDPilot's AI at Your Service
                 </div>
             </div>
         </div>
@@ -61,7 +61,7 @@
                 </li>
             </ul>
         </div>
-        <div id="pruducts" class="landing_info _products">
+        <div id="products" class="landing_info _products">
             <div class="landing_products_bg">
                 <svg version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                     x="0px" y="0px" viewBox="0 0 1845 1065" style="enable-background:new 0 0 1845 1065;"
@@ -149,14 +149,16 @@
         </div>
         <div id="contact" class="landing_info _contact">
             <h1>Contact</h1>
+            <div class="logo" data-txt="MEDPILOT">
+                <img src="../assets/images/logo.svg" alt="">                
+            </div>
             <ul class="landing_contact">
                 <li class="landing_contact_item" data-txt="Address：">
                     (106-36) Floor 1,14-15, No. 106, Section 2, Heping East Road, Taipei City
                 </li>
                 <li class="landing_contact_item" data-txt="Tel：">(02)2737-7769</li>
-                <li class="landing_contact_item" data-txt="Fax：">Fax：(02)2737-7836</li>
                 <li class="landing_contact_item" data-txt="Email：">
-                    <a href="mailto:medpilot@narlabs.org.tw">medpilot@narlabs.org.tw</a>
+                    <a href="mailto:christinewang1217@gmail.com">christinewang1217@gmail.com</a>
                 </li>
                 <li class="landing_contact_item _privacy">
                     Privacy and Information Security Policy

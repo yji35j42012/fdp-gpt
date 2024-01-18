@@ -196,7 +196,7 @@
 
 	&::before {
 		content: " - ";
-		color: #00e374;
+		color: #0076E3;
 	}
 }
 
@@ -326,16 +326,13 @@
 	// .header_title
 	&_title {
 		@include d_f(flex, none, center);
-		color: #00E374;
+		color: #0076E3;
 		font-size: 24px;
 		font-style: normal;
 		font-weight: 400;
 		line-height: normal;
 
-		._landing & {
-			color: #0076E3;
-		}
-		&._hand{
+		&._hand {
 			@extend %hand;
 		}
 	}
@@ -407,7 +404,25 @@
 	width: 36px;
 	height: 36px;
 	margin-right: 10px;
-	
+
+	.landing_info & {
+		position: relative;
+		@include d_f(flex, none, center);
+		width: 160px;
+		height: 120px;
+		margin-bottom: 93px;
+		padding-left: 40px;
+
+		&::before {
+			content: attr(data-txt);
+			position: absolute;
+			left: calc(100% + 13px);
+			color: #0076E3;
+			font-size: 44px;
+			font-style: normal;
+			font-weight: 500;
+		}
+	}
 }
 
 .normal_sort {
@@ -420,6 +435,7 @@
 
 	}
 }
+
 .gotop {
 	pointer-events: none;
 	z-index: 2;
@@ -441,7 +457,7 @@
 		opacity: 1;
 	}
 
-	@include hoverHandler{
+	@include hoverHandler {
 		background: rgba(0, 0, 0, 1);
 	}
 }

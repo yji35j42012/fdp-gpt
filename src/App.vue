@@ -3,8 +3,7 @@
 		<div :class="['header', nowPage == 'landing' ? '_landing' : '', headerBg ? '_on' : '']">
 			<div :class="['header_title', nowPage == 'front' ? '_hand' : '']" @click="goHome">
 				<div class="logo">
-					<img v-if="nowPage == 'landing'" src="./assets/images/logo.svg" alt="">
-					<img v-else src="./assets/images/logo_s.svg" alt="">
+					<img src="./assets/images/logo.svg" alt="">
 				</div>
 				MEDPILOT
 				<span v-if="nowPage == 'backend'" class="isBack">Backend</span>
@@ -14,11 +13,11 @@
 				<li class="menu_li" @click="menuHandler('home')">Home</li>
 				<li class="menu_li" @click="menuHandler('about')">About</li>
 				<li class="menu_li" @click="menuHandler('highlights')">Highlights</li>
-				<li class="menu_li" @click="menuHandler('pruducts')">Pruducts</li>
+				<li class="menu_li" @click="menuHandler('products')">Products</li>
 				<li class="menu_li" @click="menuHandler('team')">Team</li>
 				<li class="menu_li" @click="menuHandler('contact')">Contact</li>
 				<li class="menu_li _try">
-					<router-link to="/">Try it</router-link>
+					<router-link to="/front">Try it</router-link>
 				</li>
 				<li class="menu_li _btn _disabled"><button class="border_btn" disabled>Login</button></li>
 			</ul>
@@ -46,36 +45,24 @@ export default {
 		};
 	},
 	mounted() {
-		var now=this.$route.path;
-		if (now=="/landing") {
-			this.nowPage="landing";
-		} else if (now=="/front"||now=="/") {
-			this.nowPage="front"
+		var now = this.$route.path;
+
+		if (now == "/") {
+			this.nowPage = "landing";
+		} else {
+			this.nowPage = now.split("/")[1]
 		}
-		this.screenH=window.innerHeight
+		this.screenH = window.innerHeight
 		this.$refs.wrap.addEventListener('scroll', this.scrollHandler)
-		window.onload=function () {
-			let favicon=document.querySelector('link[rel="icon"]');
-			if (now=='/landing') {
-				favicon.href='/fdp-gpt/favicon_landing.ico'
-			} else {
-				favicon.href='/fdp-gpt/favicon.ico'
-			}
-		}
+
 	},
 	watch: {
 		$route(to, from) {
-			var now=this.$route.path;
-			let favicon=document.querySelector('link[rel="icon"]');
-			if (now=="/landing") {
-				this.nowPage="landing";
-				favicon.href='/fdp-gpt/favicon_landing.ico'
-			} else if (now=="/front"||now=="/") {
-				this.nowPage="front";
-				favicon.href='/fdp-gpt/favicon.ico'
+			var now = this.$route.path;
+			if (now == "/" || now == "/landing") {
+				this.nowPage = "landing";
 			} else {
-				this.nowPage=now.split("/")[1];
-				favicon.href='/fdp-gpt/favicon.ico'
+				this.nowPage = now.split("/")[1];
 			}
 		}
 	},
@@ -83,62 +70,66 @@ export default {
 		download() { },
 		menuHandler(str) {
 			clearInterval(this.scrollTime)
-			var scrollT=document.querySelector('.wrap');
-			var item=document.querySelector("#"+str).offsetTop;
-			var totalH=document.querySelector(".landing").offsetHeight
-			var lastH=document.querySelector(".landing_info:last-child").offsetHeight
-			var mh=this.screenH>lastH? totalH-this.screenH:totalH-lastH
-			if (item>scrollT.scrollTop) {
+			var scrollT = document.querySelector('.wrap');
+			var item = document.querySelector("#" + str).offsetTop;
+			var totalH = document.querySelector(".landing").offsetHeight
+			var lastH = document.querySelector(".landing_info:last-child").offsetHeight
+			var mh = this.screenH > lastH ? totalH - this.screenH : totalH - lastH
+			// this.screenH=window.innerHeight
+			if (this.screenH !== window.innerHeight) {
+				this.screenH = window.innerHeight
+			}
+			if (item > scrollT.scrollTop) {
 				this.downScroll(scrollT, item, mh);
 			} else {
 				this.upScroll(scrollT, item);
 			}
 		},
 		downScroll(sc, go, mh) {
-			var count=20
-			this.scrollTime=setInterval(() => {
-				sc.scrollTop+=count
-				if (sc.scrollTop>=mh) {
+			var count = 20
+			this.scrollTime = setInterval(() => {
+				sc.scrollTop += count
+				if (sc.scrollTop >= mh) {
 					clearInterval(this.scrollTime)
 				}
-				if (!this.headerBg&&sc.scrollTop>=this.screenH-60) {
-					this.headerBg=true
+				if (!this.headerBg && sc.scrollTop >= this.screenH - 60) {
+					this.headerBg = true
 				}
-				if (sc.scrollTop>=go) {
-					sc.scrollTop=go
+				if (sc.scrollTop >= go) {
+					sc.scrollTop = go
 					clearInterval(this.scrollTime)
 				}
 			}, 1);
 		},
 		upScroll(sc, go) {
-			var count=20
-			this.scrollTime=setInterval(() => {
-				sc.scrollTop-=count
-				if (this.headerBg&&sc.scrollTop<this.screenH-60) {
-					this.headerBg=false
+			var count = 20
+			this.scrollTime = setInterval(() => {
+				sc.scrollTop -= count
+				if (this.headerBg && sc.scrollTop < this.screenH - 60) {
+					this.headerBg = false
 				}
-				if (sc.scrollTop<=go) {
-					sc.scrollTop=go
+				if (sc.scrollTop <= go) {
+					sc.scrollTop = go
 					clearInterval(this.scrollTime)
 				}
 			}, 1);
 		},
 		scrollHandler() {
-			var sc=this.$refs.wrap
-			if (!this.headerBg&&sc.scrollTop>=this.screenH-60) {
-				this.headerBg=true
+			var sc = this.$refs.wrap
+			if (!this.headerBg && sc.scrollTop >= this.screenH - 60) {
+				this.headerBg = true
 			}
-			if (this.headerBg&&sc.scrollTop<this.screenH-60) {
-				this.headerBg=false
+			if (this.headerBg && sc.scrollTop < this.screenH - 60) {
+				this.headerBg = false
 			}
 		},
 		gotopHandler() {
-			var scrollT=document.querySelector('.wrap');
+			var scrollT = document.querySelector('.wrap');
 			this.upScroll(scrollT, 0)
 		},
 		goHome() {
-			if (this.nowPage=='front') {
-				this.$router.push("/landing");
+			if (this.nowPage == 'front') {
+				this.$router.push("/");
 			}
 		}
 	}
