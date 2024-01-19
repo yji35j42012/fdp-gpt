@@ -196,7 +196,7 @@
 
 	&::before {
 		content: " - ";
-		color: #00e374;
+		color: #0076E3;
 	}
 }
 
@@ -326,15 +326,12 @@
 	// .header_title
 	&_title {
 		@include d_f(flex, none, center);
-		color: #00E374;
+		color: #0076E3;
 		font-size: 24px;
 		font-style: normal;
 		font-weight: 400;
 		line-height: normal;
 
-		._landing & {
-			color: #0076E3;
-		}
 		&._hand{
 			@extend %hand;
 		}
