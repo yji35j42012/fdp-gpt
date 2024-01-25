@@ -89,74 +89,26 @@
         <div id="team" class="landing_info _team">
             <h1>Team</h1>
             <ul class="landing_team">
-                <li class="landing_team_item">
+                <li class="landing_team_item" v-for="(item) in teamData">
                     <div class="landing_team_pic">
-                        <img src="../assets/images/team_img.png" alt="">
+                        <img :src="item.team_src" alt="">
                     </div>
-                    <div class="landing_team_title">Jenny Wilson</div>
-                    <div class="landing_team_txt">Medical Assistant</div>
-                </li>
-                <li class="landing_team_item">
-                    <div class="landing_team_pic">
-                        <img src="../assets/images/team_img.png" alt="">
-                    </div>
-                    <div class="landing_team_title">Jenny Wilson</div>
-                    <div class="landing_team_txt">Medical Assistant</div>
-                </li>
-                <li class="landing_team_item">
-                    <div class="landing_team_pic">
-                        <img src="../assets/images/team_img.png" alt="">
-                    </div>
-                    <div class="landing_team_title">Jenny Wilson</div>
-                    <div class="landing_team_txt">Medical Assistant</div>
-                </li>
-                <li class="landing_team_item">
-                    <div class="landing_team_pic">
-                        <img src="../assets/images/team_img.png" alt="">
-                    </div>
-                    <div class="landing_team_title">Jenny Wilson</div>
-                    <div class="landing_team_txt">Medical Assistant</div>
-                </li>
-                <li class="landing_team_item">
-                    <div class="landing_team_pic">
-                        <img src="../assets/images/team_img.png" alt="">
-                    </div>
-                    <div class="landing_team_title">Jenny Wilson</div>
-                    <div class="landing_team_txt">Medical Assistant</div>
-                </li>
-                <li class="landing_team_item">
-                    <div class="landing_team_pic">
-                        <img src="../assets/images/team_img.png" alt="">
-                    </div>
-                    <div class="landing_team_title">Jenny Wilson</div>
-                    <div class="landing_team_txt">Medical Assistant</div>
-                </li>
-                <li class="landing_team_item">
-                    <div class="landing_team_pic">
-                        <img src="../assets/images/team_img.png" alt="">
-                    </div>
-                    <div class="landing_team_title">Jenny Wilson</div>
-                    <div class="landing_team_txt">Medical Assistant</div>
-                </li>
-                <li class="landing_team_item">
-                    <div class="landing_team_pic">
-                        <img src="../assets/images/team_img.png" alt="">
-                    </div>
-                    <div class="landing_team_title">Jenny Wilson</div>
-                    <div class="landing_team_txt">Medical Assistant</div>
+                    <div class="landing_team_title">{{ item.team_title }}</div>
+                    <div class="landing_team_name">{{ item.team_name }}</div>
+                    <div class="landing_team_txt">{{ item.team_info }}</div>
                 </li>
             </ul>
         </div>
         <div id="contact" class="landing_info _contact">
             <h1>Contact</h1>
             <div class="logo" data-txt="MEDPILOT">
-                <img src="../assets/images/logo.svg" alt="">                
+                <img src="../assets/images/logo.svg" alt="">
             </div>
             <ul class="landing_contact">
                 <li class="landing_contact_item" data-txt="Address：">
                     (106-36) Floor 1,14-15, No. 106, Section 2, Heping East Road, Taipei City
                 </li>
-                <li class="landing_contact_item" data-txt="Tel：">(02)2737-7769</li>
+                <li class="landing_contact_item" data-txt="Tel：">+886- 2 - 2737 - 7769</li>
                 <li class="landing_contact_item" data-txt="Email：">
                     <a href="mailto:christinewang1217@gmail.com">christinewang1217@gmail.com</a>
                 </li>
@@ -173,7 +125,40 @@
 
 export default {
     data() {
-        return {};
+        return {
+            teamData: [
+                {
+                    team_title: "CEO",
+                    team_src: require('../assets/images/team_ceo.jpg'),
+                    team_name: "Christine Wang",
+                    team_info: "PhD in Biomedical \nEngineering,Medical Device,Safety & \nRegulation, PMP"
+                },
+                {
+                    team_title: "CTO",
+                    team_src: require('../assets/images/team_cto.jpg'),
+                    team_name: "Ernest An",
+                    team_info: "PhD in Mechanical Engineering,\nComputer Vision,Medical Image Processing,Surgical Guidance System"
+                },
+                {
+                    team_title: "CIO",
+                    team_src: require('../assets/images/team_cio.jpg'),
+                    team_name: "LiangCheng Chen",
+                    team_info: "MBA in Economics,Data Analysis"
+                },
+                {
+                    team_title: "CMO",
+                    team_src: require('../assets/images/team_cmo.jpg'),
+                    team_name: "TaiYing Li",
+                    team_info: "MBA in Technology Management,\nUser Experience"
+                },
+                {
+                    team_title: "AI Consultant",
+                    team_src: require('../assets/images/team_consultant.jpg'),
+                    team_name: "Alvin Cheng",
+                    team_info: "MA in Computer Science,Advanced Artificial Intelligence,Machine Learning Consult"
+                },
+            ]
+        };
     },
     components: {},
     mounted() { },

@@ -309,7 +309,7 @@ table {
 }
 .isBack::before {
   content: " - ";
-  color: #00e374;
+  color: #0076E3;
 }
 
 .loading {
@@ -425,14 +425,11 @@ table {
   display: flex;
   justify-content: none;
   align-items: center;
-  color: #00E374;
+  color: #0076E3;
   font-size: 24px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
-}
-._landing .header_title {
-  color: #0076E3;
 }
 .header .user {
   display: flex;
@@ -502,6 +499,25 @@ table {
   width: 36px;
   height: 36px;
   margin-right: 10px;
+}
+.landing_info .logo {
+  position: relative;
+  display: flex;
+  justify-content: none;
+  align-items: center;
+  width: 160px;
+  height: 120px;
+  margin-bottom: 93px;
+  padding-left: 40px;
+}
+.landing_info .logo::before {
+  content: attr(data-txt);
+  position: absolute;
+  left: calc(100% + 13px);
+  color: #0076E3;
+  font-size: 44px;
+  font-style: normal;
+  font-weight: 500;
 }
 
 .normal_sort {
@@ -1156,12 +1172,12 @@ table {
   color: #4877A2;
 }
 .landing_info._contact {
-  padding-top: 83px;
-  padding-bottom: 189px;
+  padding-top: 80px;
+  padding-bottom: 230px;
   background-color: #272F3F;
 }
 .landing_info._contact h1 {
-  margin-bottom: 50px;
+  margin-bottom: 70px;
 }
 .landing_info h1 {
   margin-bottom: 23px;
@@ -1291,9 +1307,12 @@ table {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+  max-width: 1370px;
+  margin: auto;
 }
 .landing_team_item {
   width: calc(25% - 30px);
+  max-width: 250px;
   margin-bottom: 60px;
 }
 .landing_team_pic {
@@ -1301,20 +1320,29 @@ table {
   border-radius: 20px;
 }
 .landing_team_title {
-  margin-top: 21px;
-  color: #4877A2;
-  font-size: 32px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
-}
-.landing_team_txt {
-  margin-top: 10px;
+  margin-top: 20px;
   color: #27383F;
   font-size: 24px;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
+}
+.landing_team_name {
+  margin-top: 4px;
+  color: #4877A2;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.landing_team_txt {
+  margin-top: 4px;
+  color: #27383F;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  white-space: pre-wrap;
 }
 .landing_contact {
   padding-left: 40px;
