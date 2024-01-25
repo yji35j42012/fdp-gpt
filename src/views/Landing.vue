@@ -131,7 +131,7 @@ export default {
                     team_title: "CEO",
                     team_src: require('../assets/images/team_ceo.jpg'),
                     team_name: "Christine Wang",
-                    team_info: "PhD in Biomedical \nEngineering,Medical Device,Safety & \nRegulation, PMP"
+                    team_info: "PhD in Biomedical Engineering,\nMedical Device,Safety &\nRegulation, PMP"
                 },
                 {
                     team_title: "CTO",
