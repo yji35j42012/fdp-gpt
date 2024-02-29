@@ -115,6 +115,9 @@
                 <li class="landing_contact_item _privacy">
                     Privacy and Information Security Policy
                 </li>
+                <li class="landing_contact_item _logo">
+                    <img src="../assets/images/stpi_logo_en.png" alt="">
+                </li>
             </ul>
         </div>
     </div>
