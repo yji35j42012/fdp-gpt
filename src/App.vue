@@ -94,7 +94,7 @@
 					</div>
 					<div class="sign_info_checkbox">
 						<div class="sign_info_title">What kind of work do you do: <span class="wrong"
-								v-if="sign.isKindWrong">至少勾選一項</span></div>
+								v-if="sign.isKindWrong">Check at least one</span></div>
 						<label class="normal_checkbox" v-for="(item, index) in sign.kind">
 							<input class="normal_checkbox_inp" type="checkbox" :checked="item.isChecked"
 								@change="kindCheck(index)">
@@ -124,7 +124,7 @@
 						</div>
 					</div>
 					<div class="sign_info_checkbox">
-						<div class="sign_info_title">選擇醫療領域：<span class="wrong" v-if="sign.isAreaWrong">至少勾選一項</span>
+						<div class="sign_info_title">Select a medical specialty：<span class="wrong" v-if="sign.isAreaWrong">Check at least one</span>
 						</div>
 						<div class="sign_info_radiobox">
 							<label class="normal_radiobox">
@@ -176,8 +176,8 @@
 								</div>
 							</div>
 							<div class="sign_area_box">
-								<div class="sign_area_title">預期使用目的：<span class="wrong"
-										v-if="sign.isPurposeWrong">至少勾選一項</span></div>
+								<div class="sign_area_title">Intended Use：<span class="wrong"
+										v-if="sign.isPurposeWrong">Check at least one</span></div>
 								<label class="normal_checkbox" v-for="(item, index) in sign.purpose_m"
 									v-if="sign.areaState == 'm'">
 									<input class="normal_checkbox_inp" type="checkbox" :checked="item.isChecked"
@@ -214,8 +214,8 @@
 								</div>
 							</div>
 							<div class="sign_area_box">
-								<div class="sign_area_title">註冊目的：<span class="wrong"
-										v-if="sign.isSignPurposeWrong">至少勾選一項</span></div>
+								<div class="sign_area_title">Purpose of registration：<span class="wrong"
+										v-if="sign.isSignPurposeWrong">Check at least one</span></div>
 								<label class="normal_checkbox" v-for="(item, index) in sign.purpose_sign">
 									<input class="normal_checkbox_inp" type="checkbox" :checked="item.checked"
 										@change="signPurposeCheck(index)">
