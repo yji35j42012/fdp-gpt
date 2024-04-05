@@ -83,9 +83,10 @@
 						</div>
 						<div class="normal_sel" data-msg="Country">
 							<div class="normal_sel_title">
-								<select>
+								<select :style="sign.isNormal ? 'color: #777;' : ''" @change="changeLang">
+									<option value="" selected hidden>Select country</option>
 									<option v-for="country in countries" :key="country.alpha2Code"
-										:value="country.alpha2Code" :selected="country.name.common == 'Taiwan'">
+										:value="country.alpha2Code" style="color:#000;">
 										{{ country.name.common }}
 									</option>
 								</select>
@@ -124,7 +125,8 @@
 						</div>
 					</div>
 					<div class="sign_info_checkbox">
-						<div class="sign_info_title">Select a medical specialty：<span class="wrong" v-if="sign.isAreaWrong">Check at least one</span>
+						<div class="sign_info_title">Select a medical specialty：<span class="wrong"
+								v-if="sign.isAreaWrong">Check at least one</span>
 						</div>
 						<div class="sign_info_radiobox">
 							<label class="normal_radiobox">
@@ -268,6 +270,7 @@ export default {
 				isShowPw: false
 			},
 			sign: {
+				isNormal: true,
 				isOther: false,
 				isShow: false,
 				isKindWrong: false,
@@ -447,6 +450,9 @@ export default {
 		}
 	},
 	methods: {
+		changeLang() {
+			this.sign.isNormal = false
+		},
 		kindCheck(i) {
 			if (i == -99) {
 				this.sign.kind_other.isChecked = !this.sign.kind_other.isChecked
