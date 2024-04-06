@@ -140,7 +140,7 @@
 }
 
 .alert {
-	position: absolute;
+	position: fixed;
 	top: 0;
 	left: 0;
 	@include d_f(flex, center, center);

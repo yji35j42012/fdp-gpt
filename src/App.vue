@@ -228,7 +228,7 @@
 										{{ item.txt }}
 									</div>
 								</label>
-								<div class="other">
+								<div class="other" style="display: none;">
 									<label class="normal_checkbox">
 										<input class="normal_checkbox_inp" type="checkbox"
 											@change="signPurposeCheck(-99)">
@@ -408,12 +408,13 @@ export default {
 				isSignPurposeWrong: false,
 				signPurpose_Count: 0,
 				purpose_sign: [
-					{ title: 'Diagnostic Use: ', isChecked: false, txt: 'For the diagnosis or monitoring of diseases or conditions' },
-					{ title: 'Therapeutic Use: ', isChecked: false, txt: 'For the treatment or management of diseases, including surgical adjunctive devices' },
-					{ title: 'Prophylactic Use: ', isChecked: false, txt: 'For the prevention of the occurrence or worsening of diseases' },
-					{ title: 'Functional Improvement or Support: ', isChecked: false, txt: 'For the enhancement or maintenance of bodily functions, such as devices aiding in mobility' },
-					{ title: 'Personal Healthcare: ', isChecked: false, txt: 'For personal health monitoring or management, such as sphygmomanometers (blood pressure monitors)' },
-					{ title: 'Medical Device Safety and Performance Evaluation: ', isChecked: false, txt: 'For ensuring the safe use and effective performance of medical devices' },
+					{ title: 'Academic Research: ', isChecked: false, txt: 'Seeking information, collaborative opportunities, or sharing research findings.' },
+					{ title: 'Professional Exchange: ', isChecked: false, txt: 'Engaging with peers to exchange experiences and discuss professional issues.' },
+					{ title: 'Product Development: ', isChecked: false, txt: 'Searching for partnership opportunities or understanding market needs to develop new products.' },
+					{ title: 'Market Marketing: ', isChecked: false, txt: 'Promoting products or services and understanding industry trends.' },
+					{ title: 'Regulatory Compliance: ', isChecked: false, txt: 'Acquiring regulation and compliance information relevant to the FDA.' },
+					{ title: 'Education and Training: ', isChecked: false, txt: 'Participating in professional training or accessing educational resources.' },
+					{ title: 'Other: ', isChecked: false, txt: 'Allowing users to specify any other registration purpose.' },
 				],
 				signPurpose_other: {
 					isChecked: false,
